@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
-import ArrowDownward from '@mui/icons-material/ArrowDownward'
+import SvgCycleMan from '@components/svg/SvgCycleMan'
 
 
 export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
@@ -11,11 +11,10 @@ export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
       container
       sx={{
         position: 'relative',
-        height: '70vh',
+        height: '80vh',
         width: '100%',
         overflow: 'hidden',
         zIndex: -100,
-        mb: 15,
       }}
     >
       <Image src={imgSrc} alt={imgAlt} layout='fill' objectFit='cover' />
@@ -40,16 +39,17 @@ export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
           variant='h1'
           align='center'
           gutterBottom
+          fontFamily="Caveat"
           sx={{
             color: 'secondary.main',
-            fontWeight: 400,
+            fontSize: '4.5rem'
           }}
         >
           { title }
         </Typography>
         <Typography
           component='p'
-          variant='h3'
+          variant='h4'
           align='center'
           color='common.white'
           sx={{
@@ -58,15 +58,7 @@ export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
         >
           { subtitle }
         </Typography>
-        <Typography
-          component='p'
-          variant='h6'
-          color='secondary'
-          gutterBottom
-        >
-          Scroll
-        </Typography>
-        <ArrowDownward fontSize='large' color='secondary' />
+        <SvgCycleMan />
       </Grid>
     </Grid>
   )

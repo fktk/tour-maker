@@ -9,7 +9,6 @@ export default function SectionAbout() {
     <Container
       component='section'
       maxWidth='md'
-      sx={{ mb: 15 }}
     >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -36,17 +35,24 @@ export default function SectionAbout() {
             textAlign='center'
             gutterBottom
           >
-            A Japanese Chef
+            About Me
           </Typography>
           <Typography
-            textAlign='center'
+            textAlign='left'
             sx={{ mb: 5 }}
           >
-              {`We mix Japanese and Western ingredients and cooking methods. Provide you with a different tasting dimension with the fusion food in our restaurant. Don't miss the chance to surprise your tongue!`}
+            <p>
+              普段は材料科学者として働いています。
+              AIを独学していたら、いつの間にかWEBアプリを作れるようになっていました。
+              PythonとJavaScriptを使えます。
+            </p>
+            <p>
+              趣味は自転車通勤、夢はヨットで旅すること。
+            </p>
           </Typography>
           <MuiNextLink href='/about' underline='none'>
             <Button variant='outlined' size='large'>
-              about us
+              details
             </Button>
           </MuiNextLink>
         </Grid>

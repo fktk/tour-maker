@@ -8,7 +8,7 @@ let theme = createTheme({
       main: '#556cd6',
     },
     secondary: {
-      main: '#19857b',
+      main: '#FFD700',
     },
     error: {
       main: red.A400,
