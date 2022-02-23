@@ -25,10 +25,10 @@ export default function SectionApps() {
         <Grid container item justifyContent='center' xs={12} md={6}>
           <NavigationCard
             imgSrc='https://picsum.photos/1000/900'
-            imgAlt='Cycling Man'
-            title='Cycling Man'
-            desc='サイクリングマンのポーズやケイデンスを変えるアプリ。サイクリングマンは疲れ知らずです。'
-            pagePath='./cyclingman'
+            imgAlt='Cycle Man'
+            title='Cycle Man'
+            desc='サイクルマンのポーズやケイデンスを変えるアプリ。サイクルマンは疲れ知らずです。'
+            pagePath='./cycleman'
             ctaText='使ってみる'
           />
         </Grid>

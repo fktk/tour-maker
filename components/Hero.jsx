@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import SvgCycleMan from '@components/svg/SvgCycleMan'
 
-
 export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
   return (
     <Grid
@@ -53,12 +52,21 @@ export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
           align='center'
           color='common.white'
           sx={{
-            mb: 10,
+            mb: 10
           }}
         >
           { subtitle }
         </Typography>
-        <SvgCycleMan />
+        <Grid
+          item
+          zIndex='10'
+          sx={{
+            width: '120px',
+            mx: 'auto',
+          }}
+        >
+          <SvgCycleMan />
+        </Grid>
       </Grid>
     </Grid>
   )

@@ -2,9 +2,9 @@ import SvgPedaling from './SvgPedaling'
 import SvgBike from './SvgBike'
 import SvgBody from './SvgBody'
 
-export default function SvgCycleMan() {
-
-  const cadence = 60
+export default function SvgCycleMan({
+  cadence
+}) {
 
   const pedalLength = 165 / 2
   const legLength = 410 / 2
@@ -19,7 +19,7 @@ export default function SvgCycleMan() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="100" height="125" viewBox="0 0 800 700"
+      viewBox="0 0 800 900"
     >
       <SvgPedaling
         pedalLength={pedalLength}
