@@ -1,17 +1,14 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { yellow, green } from '@mui/material/colors';
 
 // Create a theme instance.
 let theme = createTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: green[600],
     },
     secondary: {
-      main: '#FFD700',
-    },
-    error: {
-      main: red.A400,
+      main: yellow[700],
     },
   },
 });

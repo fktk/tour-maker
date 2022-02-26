@@ -23,7 +23,7 @@ export default function Footer() {
         </MuiNextLink>
       </Stack>
       <Typography align='center' color='common.white'>
-        &copy; 1994 - {new Date().getFullYear()}, De West Sakura Restaurant
+        &copy; {new Date().getFullYear()}, TK
       </Typography>
     </Box>
   )

@@ -1,15 +1,16 @@
 
 export default function SvgBody({
-  backLength, backBending, armLength, saddleToHandle, bodyColor
+  backLength, backBending, armLength, saddleToHandle, dropBar, bodyColor
 }) {
 
   const armAngles = calcAngles(backBending, backLength, saddleToHandle, armLength)
+  const bendOffset = dropBar ? 12 : 3
 
   return (
     <>
       <defs>
         <g id="body"
-          transform={`rotate(${backBending+3})`}
+          transform={`rotate(${backBending+bendOffset})`}
         >
           <line stroke={bodyColor} strokeWidth="50" strokeLinecap="round"
             x1="0" y1="0" x2="0" y2={-backLength}

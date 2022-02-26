@@ -65,7 +65,14 @@ export default function Hero({ imgSrc, imgAlt, title, subtitle } ) {
             mx: 'auto',
           }}
         >
-          <SvgCycleMan />
+          <SvgCycleMan
+            cadence={60}
+            pedalLength={170 / 2}
+            legLength={840 / 4}
+            armLength={520 / 4}
+            backBending={40}
+            dropBar={false}
+          />
         </Grid>
       </Grid>
     </Grid>

@@ -1,20 +1,28 @@
+import { useTheme } from '@mui/material/styles'
+
 import SvgPedaling from './SvgPedaling'
 import SvgBike from './SvgBike'
 import SvgBody from './SvgBody'
 
 export default function SvgCycleMan({
-  cadence
+  cadence,
+  pedalLength,
+  legLength,
+  armLength,
+  backBending,
+  dropBar,
 }) {
 
-  const pedalLength = 165 / 2
-  const legLength = 410 / 2
+  const theme = useTheme()
 
   // 棒人間のパラメータ
-  const backLength = 480 / 2
-  const backBending = 40
-  const armLength = 260 / 2
+  const backLength = 490 / 2
   const saddleToHandle = 330
-  const bodyColor='#FFD700' // イエロージャージを参考にした
+
+  const bodyColor = dropBar ?
+    theme.palette.primary.main :
+    theme.palette.secondary.main
+    
 
   return (
     <svg
@@ -34,6 +42,7 @@ export default function SvgCycleMan({
         backBending={backBending}
         armLength={armLength}
         saddleToHandle={saddleToHandle}
+        dropBar={dropBar}
         bodyColor={bodyColor}
       />
       <SvgPedaling
