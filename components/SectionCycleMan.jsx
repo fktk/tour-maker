@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Box, Container, Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
 import Slider from '@mui/material/Slider'
 import SvgCycleMan from '@components/svg/SvgCycleMan'
 import Switch from '@mui/material/Switch'
@@ -16,21 +15,7 @@ export default function SectionCycleMan() {
   const [dropBar, setDropBar] = useState(false)
 
   return (
-    <Container
-      component='section'
-      maxWidth='md'
-    >
-      <Typography
-        variant='h1'
-        textAlign='center'
-        sx={{
-          my: 5
-        }}
-      >
-        Cycle Man
-      </Typography>
-
-      <Grid container spacing={3} my={5}
+      <Grid container spacing={4} my={5}
         justifyContent="center"
         alignItems='center'
       >
@@ -51,12 +36,11 @@ export default function SectionCycleMan() {
         </Grid>
 
         <Grid
-          item xs={8} sm={4}
+          item xs={7} sm={4}
           container
           flexDirection='column'
           justifyContent='center'
           alignItems='left'
-
         >
           <FormControlLabel 
             control={
@@ -80,9 +64,7 @@ export default function SectionCycleMan() {
               aria-label='back bending'
               value={backBending}
               valueLabelDisplay='auto'
-              step={1}
-              min={40}
-              max={50}
+              step={1} min={40} max={50}
               onChange={(_, value) => {
                 setBackBending(value)
               }}
@@ -97,9 +79,7 @@ export default function SectionCycleMan() {
               aria-label='cadence'
               value={cadence}
               valueLabelDisplay='auto'
-              step={10}
-              min={10}
-              max={300}
+              step={10} min={10} max={300}
               onChange={(_, value) => {
                 setCadence(value)
               }}
@@ -114,9 +94,7 @@ export default function SectionCycleMan() {
               aria-label='arm length'
               value={armLength}
               valueLabelDisplay='auto'
-              step={10}
-              min={500}
-              max={600}
+              step={10} min={500} max={600}
               onChange={(_, value) => {
                 setArmLength(value)
               }}
@@ -131,9 +109,7 @@ export default function SectionCycleMan() {
               aria-label='leg length'
               value={legLength}
               valueLabelDisplay='auto'
-              step={10}
-              min={800}
-              max={900}
+              step={10} min={800} max={900}
               onChange={(_, value) => {
                 setLegLength(value)
               }}
@@ -148,9 +124,7 @@ export default function SectionCycleMan() {
               aria-label='pedal length'
               value={pedalLength}
               valueLabelDisplay='auto'
-              step={5}
-              min={150}
-              max={180}
+              step={5} min={150} max={180}
               onChange={(_, value) => {
                 setPedalLength(value)
               }}
@@ -158,6 +132,5 @@ export default function SectionCycleMan() {
           </Typography>
         </Grid>
       </Grid>
-    </Container>
   )
 }

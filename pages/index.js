@@ -23,7 +23,7 @@ export default function Homepage() {
         <SectionImage imgSrc='https://picsum.photos/1000/900' imgAlt='image' />
       </Box>
 
-      <Box sx={{my: 15}}>
+      <Box id='section-about-anchor' sx={{my: 15}}>
         <SectionAbout />
       </Box>
 

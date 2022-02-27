@@ -15,6 +15,7 @@
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
+    "@mui/lab": "^5.0.0-alpha.70",
     "@mui/material": "latest",
     "chaikin-smooth": "latest",
     "dotenv": "^16.0.0",

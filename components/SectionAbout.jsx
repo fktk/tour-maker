@@ -10,7 +10,7 @@ export default function SectionAbout() {
       component='section'
       maxWidth='md'
     >
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
           <Image 
             src='https://picsum.photos/800/600'
@@ -31,9 +31,10 @@ export default function SectionAbout() {
         >
           <Typography
             component='h2'
-            variant='h4'
-            textAlign='center'
+            variant='h3'
+            textAlign='left'
             gutterBottom
+            sx={{ width: '100%' }}
           >
             About Me
           </Typography>
@@ -47,14 +48,14 @@ export default function SectionAbout() {
               PythonとJavaScriptを使えます。
             </p>
             <p>
-              趣味は自転車通勤、夢はヨットで旅すること。
+              趣味は自転車通勤。SPECIALIZEDのAllez Eliteに乗ってます。
             </p>
           </Typography>
-          <MuiNextLink href='/about' underline='none'>
-            <Button variant='outlined' size='large'>
-              details
-            </Button>
-          </MuiNextLink>
+          {/* <MuiNextLink href='/about' underline='none'> */}
+          {/*   <Button variant='outlined' size='large'> */}
+          {/*     details */}
+          {/*   </Button> */}
+          {/* </MuiNextLink> */}
         </Grid>
       </Grid>
     </Container>

@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography'
 export default function SectionApps() {
   return (
     <Container maxWidth='md'>
-
-      <Typography variant='h2' textAlign='center' sx={{ mb: 10 }}>
+      <Typography
+        variant='h3'
+        component='h2'
+        textAlign='center
+        ' sx={{ mb: 10 }}>
         Apps
       </Typography>
 

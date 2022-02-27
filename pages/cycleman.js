@@ -1,12 +1,25 @@
 import SectionCycleMan from '@components/SectionCycleMan'
-import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 
 function CycleManPage() {
   return (
-    <Box>
-      <SectionCycleMan />
-    </Box>
+    <Container
+      component='section'
+      maxWidth='md'
+    >
+      <Typography
+        variant='h1'
+        textAlign='center'
+        sx={{
+          mt: 5
+        }}
+      >
+        Cycle Man
+      </Typography>
 
+      <SectionCycleMan />
+    </Container>
   )
 }
 

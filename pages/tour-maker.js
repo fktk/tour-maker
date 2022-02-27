@@ -1,7 +1,8 @@
 import Typography from '@mui/material/Typography'
+import SectionTour from '@components/SectionTour'
+
 
 import Hero from '@components/Hero'
-import ReadFileButton from '@components/ReadFileButton'
 
 function tourMakerPage() {
   return (
@@ -13,19 +14,8 @@ function tourMakerPage() {
         subtitle='思い出のライドをもう一度'
       />
 
-      <Typography
-        variant='h1'
-        align='center'
-        gutterBottom
-        sx={{
-          color: 'primary.main',
-          fontSize: '4.5rem'
-        }}
-      >
-        Coming soon...
-      </Typography>
+      <SectionTour />
 
-      <ReadFileButton />
     </>
   )
 }
