@@ -60,7 +60,7 @@ const lineFeature = (coordinates, altitudeMode) => {
         <Style id="yellowLine">
           <LineStyle>
             <color>cf00ffff</color>
-            <witdh>10</witdh>
+            <witdh>20</witdh>
           </LineStyle>
           <PolyStyle>
             <color>cf00ffff</color>
@@ -70,7 +70,7 @@ const lineFeature = (coordinates, altitudeMode) => {
         <LineString>
           <styleUrl>#yellowLine</styleUrl>
           <extrude>1</extrude>
-          <tessellate>0</tessellate>
+          <tessellate>1</tessellate>
           <coordinates>${coordinates}</coordinates>
           <altitudeMode>${altitudeMode}</altitudeMode>
         </LineString>

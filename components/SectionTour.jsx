@@ -3,8 +3,11 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Slider from '@mui/material/Slider'
 import LoadingButton from '@mui/lab/LoadingButton'
-import SendIcon from '@mui/icons-material/Send'
 import Button from '@mui/material/Button'
+import Download from '@mui/icons-material/Download'
+import FileOpen from '@mui/icons-material/FileOpen'
+import MuiNextLink from '@src/Link'
+import Public from '@mui/icons-material/Public'
 
 import { fileToRecord, getKml } from '@src/handleFiles'
 
@@ -35,8 +38,10 @@ export default function SectionCycleMan() {
             setFile(file.name)
           } }
         />
-        <Button variant='contained' component='span' >
-          open fit file
+        <Button variant='contained' component='span'
+          startIcon={<FileOpen />}
+        >
+          open fit or gpx file
         </Button>
       </label>
       <Typography>
@@ -62,16 +67,27 @@ export default function SectionCycleMan() {
         onClick={async () => {
           setLoading(true)
           const kml = await getKml(records)
-          console.log(kml)
+          fileDownload(kml, file.substr(0, file.lastIndexOf('.')) + '.kml')
           setLoading(false)
         }}
         loading={loading}
         variant='contained'
-        endIcon={<SendIcon />}
+        startIcon={<Download />}
         loadingPosition='end'
       >
         send
       </LoadingButton>
+
+      <MuiNextLink
+        sx={{ textDecoration: 'none', color: 'primary.main', fontSize: '1.5rem' }}
+        href='https://earth.google.com/web/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Go to
+        <Public fontSize='large' />
+        the Earth
+      </MuiNextLink>
 
     </Grid>
   )

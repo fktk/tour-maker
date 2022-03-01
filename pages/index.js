@@ -11,7 +11,7 @@ export default function Homepage() {
       <Hero
         imgSrc='https://picsum.photos/1001/900'
         imgAlt='Hero Image'
-        title='Tour de Earth'
+        title='Tour de the Earth'
         subtitle='地球を走ろう'
       />
 

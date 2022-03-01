@@ -21,6 +21,7 @@
     "dotenv": "^16.0.0",
     "fit-file-parser": "latest",
     "geolib": "latest",
+    "gpxparser": "^3.0.8",
     "js-file-download": "^0.4.12",
     "next": "latest",
     "node-fetch": "^3.2.0",

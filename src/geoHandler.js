@@ -5,7 +5,6 @@ import { getGreatCircleBearing, findNearest } from 'geolib'
 import smooth from 'chaikin-smooth'
 
 import { tourWrapper, tourPoint, lineFeature } from './kmlTemplate'
-
 import { toISOString } from './utils'
 
 import 'dotenv/config'
@@ -15,8 +14,6 @@ export default async function recordsToTourString(records) {
 
   let tours = '';
   let coordinates = '';
-
-  records = lightenRecords({records, minSpeed: 5});
 
   const {lon, lat, alt} = await smoothGeoPoint(records);
 
@@ -37,7 +34,7 @@ export default async function recordsToTourString(records) {
       )
     )
     // 何倍速で再生するか 大きいとG.E.の3D更新が間に合わない
-    const devideTime = 4;
+    const devideTime = 3;
     // durationは最大で20/devideTime
     const duration = (i===0 ? 10 : Math.min((time_now - time_prev)/1000, 20) / devideTime)
 
@@ -46,27 +43,17 @@ export default async function recordsToTourString(records) {
       timestamp: toISOString(new Date(d.timestamp)),
       lon: lon[i],
       lat: lat[i],
-      alt: alt[i] + 15, // 少し視点が高くないと地面におされてガタガタする(G.E.の仕様)
+      alt: alt[i] + 30, // 少し視点が高くないと地面におされてガタガタする(G.E.の仕様)
       head,
       tilt: 77,
       altitudeMode: 'absolute',
       start: (i===0), // startだけはカメラをとめる
     })
-    coordinates += `${lon[i]},${lat[i]},${alt[i]+10} `
+    coordinates += `${lon[i]},${lat[i]},5 `
     time_prev = time_now;
   })
-  const placemarkLine = lineFeature(coordinates, 'absolute');
+  const placemarkLine = lineFeature(coordinates, 'relativeToGround');
   return tourWrapper(tours, placemarkLine);
-}
-
-function lightenRecords({records, minSpeed}) {
-  const newRecords = [];
-  records.forEach((record) => {
-    if (record.speed < minSpeed) {return;}
-    if (!record.position_long) {return;}
-    newRecords.push(record);
-  })
-  return newRecords;
 }
 
 async function smoothGeoPoint(records) {
@@ -85,6 +72,7 @@ async function smoothGeoPoint(records) {
   const lonlat = [];
   beforeSmoothed.map((point, i) => {
     //2回スムージングしたため2^2倍インデックスにかけている
+    //スムージングしてポイント数が増えたコースに対し、もとのコースの最近接の点を探している
     return findNearest({longitude: point[0], latitude: point[1]}, smoothedPath.slice(i*4, i*4+4));
   }).forEach(point => {
     lon.push(point.longitude);

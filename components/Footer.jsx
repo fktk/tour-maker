@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack'
 import MuiNextLink from '@src/Link'
 import Box from '@mui/material/Box'
 import Github from '@mui/icons-material/GitHub'
+import MailOutline from '@mui/icons-material/MailOutline'
 
 export default function Footer() {
   return (
@@ -20,6 +21,14 @@ export default function Footer() {
           rel='noopener noreferrer'
         >
           <Github fontSize='large' />
+        </MuiNextLink>
+        <MuiNextLink
+          sx={{ textDecoration: 'none', color: 'common.white', pt: 0.2}}
+          target='_blank'
+          rel='noopener noreferrer'
+          href='mailto:windwild12@gmail.com'
+        >
+          <MailOutline fontSize='large' />
         </MuiNextLink>
       </Stack>
       <Typography align='center' color='common.white'>
