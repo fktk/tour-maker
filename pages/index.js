@@ -3,6 +3,7 @@ import Hero from '@components/Hero'
 import SectionApps from '@components/SectionApps'
 import SectionAbout from '@components/SectionAbout'
 import SectionImage from '@components/SectionImage'
+import SectionContact from '@components/SectionContact'
 // import SectionReview from '@components/SectionReview'
 
 export default function Homepage() {
@@ -25,6 +26,10 @@ export default function Homepage() {
 
       <Box id='section-about-anchor' sx={{my: 15}}>
         <SectionAbout />
+      </Box>
+
+      <Box sx={{my: 15}}>
+        <SectionContact />
       </Box>
 
     </>

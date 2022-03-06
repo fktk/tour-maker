@@ -22,7 +22,7 @@ export default function NavigationCard(
       </CardContent>
       <CardActions>
         <MuiNextLink href={pagePath} underline='none'>
-          <Button variant='contained' size='large'>
+          <Button variant='contained' size='large' color='secondary'>
             { ctaText }
           </Button>
         </MuiNextLink>

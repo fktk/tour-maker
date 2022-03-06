@@ -31,8 +31,7 @@ export default function SectionAbout() {
           <Typography
             component='h2'
             variant='h3'
-            textAlign='left'
-            gutterBottom
+            textAlign={{xs: 'center', sm: 'left'}}
             sx={{ width: '100%' }}
           >
             About Me
@@ -42,8 +41,8 @@ export default function SectionAbout() {
             sx={{ mb: 5 }}
           >
             <p>
-              普段は材料科学者として働いています。
-              AIを独学していたら、いつの間にかWEBアプリを作れるようになっていました。
+              普段は電池材料の開発者として働いています。
+              AIを独学していたら、WEBアプリを作れるようになっていました。
               PythonとJavaScriptを使えます。
             </p>
             <p>

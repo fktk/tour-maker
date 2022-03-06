@@ -11,8 +11,11 @@ function CycleManPage() {
       <Typography
         variant='h1'
         textAlign='center'
+        fontFamily="Caveat"
         sx={{
-          mt: 5
+          mt: 5,
+          color: 'secondary.main',
+          fontSize: '4.5rem'
         }}
       >
         Cycle Man

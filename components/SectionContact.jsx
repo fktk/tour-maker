@@ -21,7 +21,9 @@ export default function ContactForm() {
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(schema),
   })
+
   const [isSubmitting, setSubmitting] = useState(false)
+  const [comment, setComment] = useState(false)
 
   async function onSubmit(data) {
     const res = await fetch('api/contact',{
@@ -31,7 +33,13 @@ export default function ContactForm() {
       },
       body: JSON.stringify(data)
     })
-    console.log(await res.status)
+    if (res.status === 200) {
+      setSubmitting(true)
+      setComment('メッセージを送信しました😃')
+    } else {
+      setSubmitting(true)
+      setComment('メッセージの送信に失敗しました😥後日またご連絡ください')
+    }
   }
 
   return (
@@ -46,11 +54,21 @@ export default function ContactForm() {
           <Typography
             component='h2'
             variant='h3'
-            textAlign='left'
-            gutterBottom
-            sx={{ width: '100%' }}
+            textAlign='center'
+            sx={{
+              width: '100%',
+            }}
           >
             Contact
+          </Typography>
+          <Typography
+            textAlign='center'
+            sx={{
+              width: '100%',
+              mb: 5,
+            }}
+          >
+            ご意見、ご要望などをいただけると嬉しいです。
           </Typography>
           <TextField label='name'
             {...register('name')}
@@ -71,12 +89,25 @@ export default function ContactForm() {
             helperText={errors.message?.message}
           />
           <Button 
-            variant='outlined'
-            sx={{ mx:'auto', width:'100%', maxWidth: '200px' }}
+            variant='contained'
+            color='secondary'
+            size='large'
+            sx={{ mx:'auto', width:'100%', maxWidth: '200px', mt: 3 }}
             onClick={ handleSubmit(onSubmit) }
-            type="submit" disabled={isSubmitting}>
+            type="submit"
+            disabled={isSubmitting}
+          >
             Submit
           </Button>
+          <Typography
+            variant='body2'
+            textAlign='center'
+            sx={{
+              width: '100%',
+            }}
+          >
+            { comment }
+          </Typography>
         </Grid>
     </Container>
   );
