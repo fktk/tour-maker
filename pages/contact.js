@@ -1,6 +1,7 @@
+import SectionContact from '@components/SectionContact'
 function ContactPage() {
   return (
-    <h1>This is contact page</h1>
+    <SectionContact />
   )
 }
 

@@ -1,8 +1,7 @@
-import { Container, Grid } from '@mui/material'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Typography from '@mui/material/Typography'
-import MuiNextLink from '@src/Link'
-import Button from '@mui/material/Button'
 
 export default function SectionAbout() {
   return (

@@ -25,6 +25,8 @@ export default function SectionCycleMan() {
       flexDirection='column'
       justifyContent='center'
       alignItems='center'
+      gap={2}
+      my={5}
     >
       <label htmlFor="contained-button-file">
         <input
@@ -75,7 +77,7 @@ export default function SectionCycleMan() {
         startIcon={<Download />}
         loadingPosition='end'
       >
-        send
+        download tour file
       </LoadingButton>
 
       <MuiNextLink
