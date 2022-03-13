@@ -11,6 +11,7 @@ export default function SvgCycleMan({
   armLength,
   backBending,
   dropBar,
+  svgRef,
 }) {
 
   const theme = useTheme()
@@ -26,6 +27,7 @@ export default function SvgCycleMan({
 
   return (
     <svg
+      ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 800 900"
     >

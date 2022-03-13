@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography'
 import SectionTour from '@components/SectionTour'
-
+import SectionGetStart from '@components/SectionGetStart'
 
 import Hero from '@components/Hero'
 
@@ -15,6 +15,7 @@ function tourMakerPage() {
       />
 
       <SectionTour />
+      <SectionGetStart />
 
     </>
   )
