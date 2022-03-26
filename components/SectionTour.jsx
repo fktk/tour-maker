@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Slider from '@mui/material/Slider'
@@ -84,7 +83,8 @@ export default function SectionCycleMan() {
         <LoadingButton
           onClick={async () => {
             setLoading(true)
-            const kml = await getKml(records)
+            console.log(records)
+            const kml = getKml(records)
             fileDownload(kml, file.substr(0, file.lastIndexOf('.')) + '.kml')
             setLoading(false)
           }}

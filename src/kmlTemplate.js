@@ -37,9 +37,6 @@ const tourPoint = ({
           <gx:duration>${duration}</gx:duration>
           ${(start ? '': '<gx:flyToMode>smooth</gx:flyToMode>')}
           <Camera>
-            <gx:TimeStamp>
-              <when>${timestamp}</when>
-            </gx:TimeStamp>
             <longitude>${lon}</longitude>
             <latitude>${lat}</latitude>
             <altitude>${alt}</altitude>

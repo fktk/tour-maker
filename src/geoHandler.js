@@ -1,21 +1,18 @@
 'use strict';
 
-import fetch from 'node-fetch'
 import { getGreatCircleBearing, findNearest } from 'geolib'
 import smooth from 'chaikin-smooth'
 
 import { tourWrapper, tourPoint, lineFeature } from './kmlTemplate'
 import { toISOString } from './utils'
 
-import 'dotenv/config'
-
-export default async function recordsToTourString(records) {
+export function recordsToTourString(records) {
   let time_prev = 0;
 
   let tours = '';
   let coordinates = '';
 
-  const {lon, lat, alt} = await smoothGeoPoint(records);
+  const {lon, lat, alt} = smoothGeoPoint(records);
 
   const skipNumber = 3;
 
@@ -56,11 +53,9 @@ export default async function recordsToTourString(records) {
   return tourWrapper(tours, placemarkLine);
 }
 
-async function smoothGeoPoint(records) {
-  const beforeSmoothed = [];
-
-  records.forEach(record => {
-    beforeSmoothed.push([record.position_long, record.position_lat]);
+function smoothGeoPoint(records) {
+  const beforeSmoothed = records.map(record => {
+    return [record.position_long, record.position_lat, record.altitude];
   })
   //x回スムージングすると配列が2^xの大きさになる
   const smoothedPath = smooth(smooth(beforeSmoothed)).map(point => {
@@ -69,49 +64,18 @@ async function smoothGeoPoint(records) {
 
   const lon = [];
   const lat = [];
-  const lonlat = [];
+  const alt = [];
   beforeSmoothed.map((point, i) => {
     //2回スムージングしたため2^2倍インデックスにかけている
-    //スムージングしてポイント数が増えたコースに対し、もとのコースの最近接の点を探している
+    //スムージングしたコース(配列数2^2倍)に対し、もとのコースの最近接の点を探している
+    alt.push(point[2])
     return findNearest({longitude: point[0], latitude: point[1]}, smoothedPath.slice(i*4, i*4+4));
   }).forEach(point => {
     lon.push(point.longitude);
     lat.push(point.latitude);
-    lonlat.push(point.longitude, point.latitude);
   })
+  console.log(alt)
 
-  // 標高はG.E.では建物込なので、建物なしのデータをYahoo apiから取得する
-  const alt = await getElevationList(lonlat);
   return { lon, lat, alt };
-}
-
-async function getElevationList(lonlat) {
-  let alt = [];
-  let lonlat_200;
-  
-  while ((lonlat_200 = lonlat.splice(0, 200)).length !== 0) {
-    const coordinates = lonlat_200.join(',');
-    alt = alt.concat(await fetchElevation(coordinates));
-  }
-  return alt;
-}
-
-async function fetchElevation(coordinates) {
-  const URL = `https://map.yahooapis.jp/alt/V1/getAltitude`
-  const appid = process.env.YAHOOID;
-  const body = `appid=${appid}&coordinates=${coordinates}&output=json`
-  const response = await fetch(URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body
-  });
-  const res = await response.text();
-  const altList = [];
-  JSON.parse(res).Feature.forEach(point => {
-    altList.push(point.Property.Altitude);
-  })
-  return altList;
 }
 

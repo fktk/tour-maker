@@ -79,9 +79,7 @@ function Leg({
   )
 
   const degs = rotAngles.map(deg => calcPedalingAngles(deg, saddleToBB, pedalLength, legLength))
-  const lowerDegStr = degs.map(deg => {
-    return (deg.alpha * 2).toFixed(2) + ';'
-  }).join('')
+  const lowerDegStr = degs.map(deg => `${(deg.alpha * 2).toFixed(2)};`).join('')
   const upperDegStr = degs.map(deg => {
     return (-(deg.alpha + deg.beta)).toFixed(2) + ';'
   }).join('')

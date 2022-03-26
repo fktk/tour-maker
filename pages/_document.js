@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="icon" href="/cycle.svg" type="image/svg+xml" />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link
             rel="stylesheet"

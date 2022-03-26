@@ -1,6 +1,7 @@
 import FitParser from 'fit-file-parser/dist/fit-parser'
 import gpxParser from 'gpxparser'
 import { getDistance } from 'geolib'
+import { recordsToTourString } from '@src/geoHandler'
 
 export async function fileToRecord(file) {
   let records;
@@ -49,18 +50,12 @@ export async function fileToRecord(file) {
   }
 }
 
-export async function getKml(records) {
+export function getKml(records) {
   if (records[0].timestamp === null) {
     records = setTimestamp(records)
-   }
-  const res = await fetch('api/create',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(records)
-  })
-  return await res.text()
+  }
+  const tour = recordsToTourString(records);
+  return tour
 }
 
 function setTimestamp(records) {
@@ -83,7 +78,6 @@ function setTimestamp(records) {
       timestamp: new Date(time.getTime()),
     }
   })
-  console.log(newRecords)
 
   return newRecords
 }
