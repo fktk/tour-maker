@@ -3,8 +3,10 @@
 const tourWrapper = (tours, placemarks) => {
   return (
 `<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2"
- xmlns:gx="http://www.google.com/kml/ext/2.2">
+<kml
+  xmlns="http://www.opengis.net/kml/2.2"
+  xmlns:gx="http://www.google.com/kml/ext/2.2"
+>
   <Document>
     <name>Your tour</name>
     <open>1</open>
@@ -22,7 +24,6 @@ const tourWrapper = (tours, placemarks) => {
 
 const tourPoint = ({
   duration,
-  timestamp,
   lon,
   lat,
   alt,
@@ -34,15 +35,14 @@ const tourPoint = ({
   return (
 `
         <gx:FlyTo>
-          <gx:duration>${duration}</gx:duration>
+          <gx:duration>${duration.toFixed(2)}</gx:duration>
           ${(start ? '': '<gx:flyToMode>smooth</gx:flyToMode>')}
           <Camera>
             <longitude>${lon}</longitude>
             <latitude>${lat}</latitude>
             <altitude>${alt}</altitude>
-            <heading>${head}</heading>
+            <heading>${head.toFixed(1)}</heading>
             <tilt>${tilt}</tilt>
-            <roll>0</roll>
             <altitudeMode>${altitudeMode}</altitudeMode>
           </Camera>
         </gx:FlyTo>
@@ -56,11 +56,11 @@ const lineFeature = (coordinates, altitudeMode) => {
       <Placemark>
         <Style id="yellowLine">
           <LineStyle>
-            <color>cf00ffff</color>
+            <color>cf00ffee</color>
             <witdh>20</witdh>
           </LineStyle>
           <PolyStyle>
-            <color>cf00ffff</color>
+            <color>cf00ffee</color>
           </PolyStyle>
         </Style>
         <name>経路</name>

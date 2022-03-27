@@ -83,7 +83,6 @@ export default function SectionCycleMan() {
         <LoadingButton
           onClick={async () => {
             setLoading(true)
-            console.log(records)
             const kml = getKml(records)
             fileDownload(kml, file.substr(0, file.lastIndexOf('.')) + '.kml')
             setLoading(false)

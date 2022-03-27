@@ -67,14 +67,14 @@ function setTimestamp(records) {
       const durSecond = getDistance(
         {latitude: arr[i].position_lat, longitude: arr[i].position_long},
         {latitude: arr[i - 1].position_lat, longitude: arr[i - 1].position_long},
-        0.1
+        0.01
       ) / 10 // 時速36 km/h で走ったときの時間
-      time.setSeconds(time.getSeconds() + durSecond)
+      time.setSeconds(time.getSeconds() + time.getMilliseconds() / 1000 +  durSecond)
     }
     return {
       position_lat: record.position_lat,
       position_long: record.position_long,
-      position_alt: record.altitude,
+      altitude: record.altitude,
       timestamp: new Date(time.getTime()),
     }
   })

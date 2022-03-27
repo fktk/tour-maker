@@ -1,10 +1,9 @@
 'use strict';
 
-import { getGreatCircleBearing, findNearest } from 'geolib'
+import { getRhumbLineBearing, findNearest } from 'geolib'
 import smooth from 'chaikin-smooth'
 
 import { tourWrapper, tourPoint, lineFeature } from './kmlTemplate'
-import { toISOString } from './utils'
 
 export function recordsToTourString(records) {
   let time_prev = 0;
@@ -17,15 +16,15 @@ export function recordsToTourString(records) {
   const skipNumber = 3;
 
   records.forEach((d, i) => {
-    if (i % (skipNumber+1) !== 0) {return;}
+    if (i % (skipNumber+1) !== 0) return;
     const time_now = Date.parse(d.timestamp);
     const head = (
       i === 0 ?
-      getGreatCircleBearing(
+      getRhumbLineBearing(
         { latitude: lat[0], longitude: lon[0] },
         { latitude: lat[1], longitude: lon[1] },
       )
-      : getGreatCircleBearing(
+      : getRhumbLineBearing(
         { latitude: lat[i-1], longitude: lon[i-1] },
         { latitude: lat[i], longitude: lon[i] },
       )
@@ -33,11 +32,12 @@ export function recordsToTourString(records) {
     // 何倍速で再生するか 大きいとG.E.の3D更新が間に合わない
     const devideTime = 3;
     // durationは最大で20/devideTime
-    const duration = (i===0 ? 10 : Math.min((time_now - time_prev)/1000, 20) / devideTime)
+    const duration = (i===0 ? 5 : Math.min((time_now - time_prev)/1000, 20) / devideTime)
+
+    if (duration === 0) return;
 
     tours += tourPoint({
       duration,
-      timestamp: toISOString(new Date(d.timestamp)),
       lon: lon[i],
       lat: lat[i],
       alt: alt[i] + 30, // 少し視点が高くないと地面におされてガタガタする(G.E.の仕様)
@@ -74,7 +74,6 @@ function smoothGeoPoint(records) {
     lon.push(point.longitude);
     lat.push(point.latitude);
   })
-  console.log(alt)
 
   return { lon, lat, alt };
 }
